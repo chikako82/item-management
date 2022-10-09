@@ -17,6 +17,9 @@
                             <div class="input-group-append">
                                 <a href="{{ url('items/add') }}" class="btn btn-default">商品登録</a>
                             </div>
+                            <div class="input-group-append">
+                                <a href="{{ url('types/add') }}" class="btn btn-default ml-3">カテゴリー登録</a>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -26,3 +26,11 @@ Route::prefix('items')->group(function () {
     Route::get('/add', [App\Http\Controllers\ItemController::class, 'add']);
     Route::post('/add', [App\Http\Controllers\ItemController::class, 'add']);
 });
+
+Route::prefix('types')->group(function () {
+    Route::get('/', [App\Http\Controllers\TypeController::class, 'index']);
+    Route::get('/add', [App\Http\Controllers\TypeController::class, 'add']);
+    Route::post('/add', [App\Http\Controllers\TypeController::class, 'add']);
+    Route::get('/{id}/edit', [App\Http\Controllers\TypeController::class, 'edit'])->name('/types/{id}/edit');
+    Route::post('/{id}/edit', [App\Http\Controllers\TypeController::class, 'update'])->name('/types/{id}/edit');
+});
