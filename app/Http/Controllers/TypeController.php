@@ -24,8 +24,10 @@ class TypeController extends Controller
         if ($request->isMethod('post')) {
             // バリデーション
             $this->validate($request, [
-                'name' => 'required|max:100',
-            ]);
+                'name' => 'required|max:100|unique:types'],
+                ['name.required' => 'カテゴリー名を入力してください。',
+                 'name.unique' => 'そのカテゴリー名は既に登録されています。']
+                );
 
             // カテゴリー登録
             Type::create([

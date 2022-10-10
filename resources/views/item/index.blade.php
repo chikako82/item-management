@@ -29,7 +29,10 @@
                             <tr>
                                 <th>ID</th>
                                 <th>名前</th>
-                                <th>種別</th>
+                                <th>カテゴリー</th>
+                                <th>金額</th>
+                                <th>在庫数</th>
+                                <th>画像</th>
                                 <th>詳細</th>
                             </tr>
                         </thead>
@@ -38,8 +41,45 @@
                                 <tr>
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->name }}</td>
-                                    <td>{{ $item->type }}</td>
+                                    <td>{{ $item->type->name }}</td>
+                                    <td>{{ $item->price }}</td>
+                                    <td>{{ $item->stock }}</td>
+                                    <td style="max-width: 50px;">
+                                        <img src="{{asset('images')}}/{{$item->image}}" class="img-fluid" />
+                                    </td>
                                     <td>{{ $item->detail }}</td>
+                                    <td>
+                                        <a href="{{ url('items/'.$item->id.'/edit') }}">
+                                            <button type="button" class="btn btn-outline-danger">編集</button>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modal{{$item->id}}">削除</button></td>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="modal{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <form action="{{ url('items/'.$item->id.'/delete') }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="modalLabel">商品削除</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            本当に削除しますか？
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
+                                                            <button type="submit" class="btn btn-primary">削除</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
                                 </tr>
                             @endforeach
                         </tbody>

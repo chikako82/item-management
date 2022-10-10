@@ -36,4 +36,8 @@ class Item extends Model
      */
     protected $casts = [
     ];
+
+    public function type(){
+        return $this->hasOne('App\Models\Type','id','type_id');
+       }
 }

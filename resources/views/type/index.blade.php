@@ -38,13 +38,12 @@
                                     <td>{{ $type->name }}</td>
                                     <td>
                                         <a href="{{ url('types/'.$type->id.'/edit') }}">
-                                            <button type="button" class="btn btn-outline-danger">編集</button></td>
+                                            <button type="button" class="btn btn-outline-danger">編集</button>
                                         </a>
+                                    </td>
                                     <td>
                                         <!-- Button trigger modal -->
-                                        <!-- <a href="{{ url('types/'.$type->id.'/delete') }}"> -->
-                                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modal{{$type->id}}">削除</button></td>
-                                        <!-- </a> -->
+                                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modal{{$type->id}}">削除</button></td>
                                         <!-- Modal -->
                                         <div class="modal fade" id="modal{{$type->id}}" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">

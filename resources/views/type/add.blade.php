@@ -34,6 +34,9 @@
                     </div>
                 </form>
             </div>
+            <div class="my-4 ml-3">
+                <a href="{{ url('types') }}">>> カテゴリー一覧へ</a>
+            </div>
         </div>
     </div>
 @stop

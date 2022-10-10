@@ -34,10 +34,9 @@
                         <button type="submit" class="btn btn-primary">編集</button>
                     </div>
                 </form>
-
-                <div class="my-4">
-                    <a href="{{ url('types') }}">> 一覧ページへ</a>
-                </div>
+            </div>
+            <div class="my-4 ml-3">
+                    <a href="{{ url('types') }}">>> カテゴリー一覧へ</a>
             </div>
         </div>
     </div>
