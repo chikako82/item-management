@@ -33,4 +33,5 @@ Route::prefix('types')->group(function () {
     Route::post('/add', [App\Http\Controllers\TypeController::class, 'add']);
     Route::get('/{id}/edit', [App\Http\Controllers\TypeController::class, 'edit'])->name('/types/{id}/edit');
     Route::post('/{id}/edit', [App\Http\Controllers\TypeController::class, 'update'])->name('/types/{id}/edit');
+    Route::delete('/{id}/delete', [App\Http\Controllers\TypeController::class, 'destroy'])->name('/types/{id}/delete');
 });

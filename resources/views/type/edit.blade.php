@@ -36,7 +36,7 @@
                 </form>
 
                 <div class="my-4">
-                    <a href="{{ url('types') }}">> 一覧ページへ</a>  // 変更
+                    <a href="{{ url('types') }}">> 一覧ページへ</a>
                 </div>
             </div>
         </div>

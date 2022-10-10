@@ -40,7 +40,35 @@
                                         <a href="{{ url('types/'.$type->id.'/edit') }}">
                                             <button type="button" class="btn btn-outline-danger">編集</button></td>
                                         </a>
-                                    <td><button type="button" class="btn btn-outline-primary">削除</button></td>
+                                    <td>
+                                        <!-- Button trigger modal -->
+                                        <!-- <a href="{{ url('types/'.$type->id.'/delete') }}"> -->
+                                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modal{{$type->id}}">削除</button></td>
+                                        <!-- </a> -->
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="modal{{$type->id}}" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <form action="{{ url('types/'.$type->id.'/delete') }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="modalLabel">カテゴリー削除</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            本当に削除しますか？
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
+                                                            <button type="submit" class="btn btn-primary">削除</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
                                 </tr>
                             @endforeach
                         

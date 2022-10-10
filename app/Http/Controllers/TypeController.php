@@ -55,4 +55,13 @@ class TypeController extends Controller
        return redirect('/types');
     //    return redirect('/category')->with('message', 'カテゴリーが編集されました。');
    }
+
+    // カテゴリー削除
+    public function destroy($id)
+   {
+       $type = Type::find($id);
+       $type->delete();
+
+       return redirect('/types');
+   }   
 }
