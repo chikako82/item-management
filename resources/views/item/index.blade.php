@@ -28,7 +28,7 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>名前</th>
+                                <th>商品名</th>
                                 <th>カテゴリー</th>
                                 <th>金額</th>
                                 <th>在庫数</th>

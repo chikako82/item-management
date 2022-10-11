@@ -68,6 +68,9 @@
                     </div>
                 </form>
             </div>
+            <div class="my-4 ml-3">
+                <a href="{{ url('items') }}">>> 商品一覧へ</a>
+            </div>
         </div>
     </div>
 @stop

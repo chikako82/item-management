@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Item;
 
 class HomeController extends Controller
 {
@@ -24,5 +25,19 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    /**
+     * 商品一覧
+     */
+    public function top()
+    {
+        // 商品一覧取得
+        $items = Item
+            ::where('items.status', 'active')
+            ->select()
+            ->get();
+
+        return view('home.top', compact('items'));
     }
 }
