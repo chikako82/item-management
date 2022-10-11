@@ -39,4 +39,7 @@ Route::prefix('types')->group(function () {
     Route::delete('/{id}/delete', [App\Http\Controllers\TypeController::class, 'destroy'])->name('/types/{id}/delete');
 });
 
-Route::get('/top', [App\Http\Controllers\HomeController::class, 'top']);
+Route::prefix('home')->group(function () {
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'top']);
+    Route::get('/{id}/index', [App\Http\Controllers\HomeController::class, 'index'])->name('/home/{id}/index');
+});

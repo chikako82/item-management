@@ -1,0 +1,9 @@
+body {
+    margin-top: 60px;
+    background-image: url(../images/top-photo2022-10-10.png);
+    background-size: cover;
+}
+
+.card {
+    margin-right: 10px;
+}

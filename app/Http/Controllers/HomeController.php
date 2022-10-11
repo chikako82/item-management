@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Type;
 use App\Models\Item;
 
 class HomeController extends Controller
@@ -22,22 +23,31 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
-        return view('home');
-    }
+    // public function index()
+    // {
+    //     return view('home');
+    // }
 
     /**
      * 商品一覧
      */
     public function top()
     {
-        // 商品一覧取得
-        $items = Item
-            ::where('items.status', 'active')
-            ->select()
-            ->get();
+        $types = Type::all();
+        return view('home.top', compact('types'));
+    }
 
-        return view('home.top', compact('items'));
+    public function index($id)
+    {
+        // 商品一覧取得
+        $type = Type::all();
+        $current_type = Type::find($id);
+        $items = Item::where('type_id', $current_type->id)->get();
+        
+        return view('home.index', [
+            'types' => $type,
+            'current_type_name' => $current_type->name,
+            'items' => $items,
+        ]);
     }
 }
