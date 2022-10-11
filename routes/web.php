@@ -42,4 +42,5 @@ Route::prefix('types')->group(function () {
 Route::prefix('home')->group(function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'top']);
     Route::get('/{id}/index', [App\Http\Controllers\HomeController::class, 'index'])->name('/home/{id}/index');
+    Route::get('/{id}/show', [App\Http\Controllers\HomeController::class, 'show'])->name('/home/{id}/show');
 });

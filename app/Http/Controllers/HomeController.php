@@ -39,15 +39,23 @@ class HomeController extends Controller
 
     public function index($id)
     {
-        // 商品一覧取得
+        // 指定カテゴリーの商品情報を取得
         $type = Type::all();
         $current_type = Type::find($id);
         $items = Item::where('type_id', $current_type->id)->get();
-        
+
         return view('home.index', [
             'types' => $type,
             'current_type_name' => $current_type->name,
             'items' => $items,
         ]);
     }
+
+    public function show($id)
+    {
+        $item = Item::find($id);
+        $types = Type::all();
+        return view('home.show', compact('item','types'));
+    }
+
 }
