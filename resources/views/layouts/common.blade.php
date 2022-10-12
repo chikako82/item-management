@@ -11,37 +11,47 @@
 <body>
     <div class="container">
         <div class="nav">
-            <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top p-1">
+            <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top p-1">
                 <a href="{{ url('home') }}" class="navbar-brand">SHOP HOME</a>
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('home') }}">HOME</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="#">CONTACT</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav">
-                    <form class="form-inline ml-auto">
-                        <label class="sr-only" for="keyword">SERCH</label>
-                        <input type="search" class="form-control form-control-sm mr-2" placeholder="SERCH" id="keyword">
-                        <button type="submit" class="btn btn-light btn-sm">SERCH</button>
-                    </form>
-                    <li class="nav-item ml-3">
-                        <a class="nav-link" href="#">LOG IN</a>
-                    </li>
-                </ul>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#responsiveMenuTop" aria-controls="responsiveMenuTop" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="responsiveMenuTop">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('home') }}">HOME</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="#">CONTACT</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <form class="form-inline ml-auto">
+                            <label class="sr-only" for="keyword">SERCH</label>
+                            <input type="search" class="form-control form-control-sm mr-2" placeholder="SERCH" id="keyword">
+                            <button type="submit" class="btn btn-light btn-sm">SERCH</button>
+                        </form>
+                        <li class="nav-item ml-3">
+                            <a class="nav-link" href="#">LOG IN</a>
+                        </li>
+                    </ul>
+                </div>
             </nav>
         </div>
 
         <div class="nav">
-            <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-bottom justify-content-center">
+            <nav class="navbar navbar-expand-md navbar-light bg-light fixed-bottom">
                <a href="{{ url('home') }}" class="navbar-brand h1">HOME</a>
-               <div class="navbar-nav">
-                @foreach($types as $type)
-                   <a class="nav-item nav-link h4" href="{{ url('home/'.$type->id.'/index') }}">{{ $type->name }}</a>
-                @endforeach
-               </div>
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#responsiveMenu" aria-controls="responsiveMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="responsiveMenu">
+                    <div class="navbar-nav">
+                        @foreach($types as $type)
+                        <a class="nav-item nav-link h4" href="{{ url('home/'.$type->id.'/index') }}">{{ $type->name }}</a>
+                        @endforeach
+                    </div>
+                </div>
             </nav>
         </div>
     </div>
