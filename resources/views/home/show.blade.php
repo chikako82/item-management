@@ -9,10 +9,11 @@
         <div class="col-xs-12 col-md-6 img-wrapper">
             <img src="{{ asset('images') }}/{{ $item->image }}" class="card-img-top" />
         </div>
-        <div class="col-xs-12 col-md-6 card-body">
-            <p style="font-weight:bold">{{ $item->name }}</p>
-            <p>{{ $item->price }}円</p>
-            <p style="font-size:smaller">{{ $item->datail }}</p>
+        <div class="col-xs-12 col-md-6 card-body show-body">
+            <p class="show-text" style="font-weight:bold">{{ $item->name }}</p>
+            <p class="show-text">{{ $item->price }}円</p>
+            <p class="show-text" style="font-size:smaller">【商品詳細】</p>
+            <p class="show-text" style="font-size:smaller">{{ $item->detail }}</p>
         </div>
     </div>
 
