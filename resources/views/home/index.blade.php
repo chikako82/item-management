@@ -16,6 +16,7 @@
             <a href="{{ url('home/'.$item->id.'/show') }}"> 
               <p class="card-title font-weight-bold" style="display:inline;">{{ $item->name }}</p></a><br>
               <p class="card-title" style="float: left">{{ $item->price }} 円</p>
+
               @if($item->stock == 0)
               <p class="card-text" style="float: right; color:red; font-weight:bold;">SOLD OUT</p>
               @elseif($item->stock < 10)
@@ -26,7 +27,7 @@
               <hr>
           </div>
           <div style="text-align: center">
-            <a class="buy-btn btn btn-outline-primary btn-sm mb-2" href="#" role="button">ADD TO BAG</a>    
+            <a class="buy-btn btn btn-outline-primary btn-sm mb-2 @if($item->stock == 0) disabled @endif" href="#" role="button" @if($item->stock == 0)tabindex="-1" @endif>ADD TO BAG</a>    
           </div>
       </div>
     @endforeach

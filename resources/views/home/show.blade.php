@@ -10,16 +10,17 @@
             <img src="{{ asset('images') }}/{{ $item->image }}" class="card-img-top" />
         </div>
         <div class="col-xs-12 col-md-6 card-body show-body">
-            <p class="show-text" style="font-weight:bold">{{ $item->name }}</p>
+            <p class="show-text" style="font-weight:bold; font-size:larger">{{ $item->name }}</p>
             <p class="show-text">{{ $item->price }}円</p>
-            <p class="show-text" style="font-size:smaller">【商品詳細】</p>
+            <p class="show-text" style="font-size:smaller">商品詳細</p>
             <p class="show-text" style="font-size:smaller">{{ $item->detail }}</p>
+            @if($item->stock == 0)<p class="show-text" style="color:red; font-weight:bold; font-size:larger;">SOLD OUT</p>@endif
         </div>
     </div>
 
     <hr>
         <div style="text-align: center">
-            <a class="buy-btn btn btn-outline-primary btn-sm" href="#" role="button">ADD TO BAG</a>    
+            <a class="buy-btn btn btn-outline-primary btn-sm mb-2 @if($item->stock == 0) disabled @endif" href="#" role="button" @if($item->stock == 0)tabindex="-1" @endif>ADD TO BAG</a>
         </div>
 </div>
 

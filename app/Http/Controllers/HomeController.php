@@ -43,7 +43,7 @@ class HomeController extends Controller
         $type = Type::all();
         $current_type = Type::find($id);
         $items = Item::where('type_id', $current_type->id)->get();
-
+        
         return view('home.index', [
             'types' => $type,
             'current_type_name' => $current_type->name,
