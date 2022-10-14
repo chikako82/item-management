@@ -1,5 +1,5 @@
 <?php
-
+// use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,4 +43,10 @@ Route::prefix('home')->group(function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'top']);
     Route::get('/{id}/index', [App\Http\Controllers\HomeController::class, 'index'])->name('/home/{id}/index');
     Route::get('/{id}/show', [App\Http\Controllers\HomeController::class, 'show'])->name('/home/{id}/show');
+    Route::get('/cart', [App\Http\Controllers\CartController::class, 'cartList']);
+    Route::post('/cart', [App\Http\Controllers\CartController::class, 'addToCart']);
+    Route::post('/cart/update', [App\Http\Controllers\CartController::class, 'updateCart']);
+    Route::post('/cart/remove', [App\Http\Controllers\CartController::class, 'removeCart']);
+    Route::post('/cart/clear', [App\Http\Controllers\CartController::class, 'clearAllCart']);
+
 });

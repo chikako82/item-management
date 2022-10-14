@@ -26,9 +26,18 @@
               @endif
               <hr>
           </div>
-          <div style="text-align: center">
+          <!-- <div style="text-align: center">
             <a class="buy-btn btn btn-outline-primary btn-sm mb-2 @if($item->stock == 0) disabled @endif" href="#" role="button" @if($item->stock == 0)tabindex="-1" @endif>ADD TO BAG</a>    
-          </div>
+          </div> -->
+          <form action="{{ url('home/cart') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <input type="hidden" value="{{ $item->id }}" name="id">
+            <input type="hidden" value="{{ $item->name }}" name="name">
+            <input type="hidden" value="{{ $item->price }}" name="price">
+            <input type="hidden" value="{{ $item->image }}"  name="image">
+            <input type="hidden" value="1" name="quantity">
+            <button type="submit" class="buy-btn btn btn-outline-primary btn-sm mb-2 @if($item->stock == 0) disabled @endif">Add To Cart</button>
+          </form>
       </div>
     @endforeach
 

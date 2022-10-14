@@ -7,6 +7,7 @@
 <script src="{{ asset('js/app.js') }}" defer></script>
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<script src="https://kit.fontawesome.com/75e204f764.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
@@ -28,9 +29,11 @@
                     <ul class="navbar-nav">
                         <form class="form-inline ml-auto">
                             <label class="sr-only" for="keyword">SERCH</label>
-                            <input type="search" class="form-control form-control-sm mr-2" placeholder="SERCH" id="keyword">
-                            <button type="submit" class="btn btn-light btn-sm">SERCH</button>
+                            <input type="search" class="form-control form-control-sm mr-2" placeholder="SEARCH" id="keyword">
+                            <button type="submit" class="btn btn-light btn-sm mr-5">SEARCH</button>
                         </form>
+                        <li class="nav-item"><a class="nav-link" href="{{ url('home/cart') }}"><i class="fa-solid fa-cart-shopping"></i> {{ Cart::getTotalQuantity()}}</a>
+                        </li>
                         <li class="nav-item ml-3">
                             <a class="nav-link" href="#">LOG IN</a>
                         </li>
