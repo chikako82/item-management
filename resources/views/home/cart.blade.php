@@ -19,20 +19,20 @@
                               <th>Name</th>
                               <th>Qtd Quantity</th>
                               <th>Price</th>
-                              <th>Remove</th>
+                              <th class="table-th">Remove</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($cartItems as $item)
                             <tr class="table-row">
                               <td>
-                                <a href="#">
+                                <a href="{{ url('home/'.$item->id.'/show') }}">
                                   <img src="{{ asset('images') }}/{{ $item->attributes->image }}">
                                 </a>
                               </td>
                               <td>
-                                <a href="#">
-                                  <p>{{ $item->name }}</p>
+                                <a href="{{ url('home/'.$item->id.'/show') }}">
+                                  <p class="cart-item-name">{{ $item->name }}</p>
                                 </a>
                               </td>
                               <td>  
