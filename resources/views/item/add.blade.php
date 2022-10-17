@@ -69,7 +69,7 @@
                 </form>
             </div>
             <div class="my-4 ml-3">
-                <a href="{{ url('items') }}">>> 商品一覧へ</a>
+                <a href="{{ url('items/index') }}">>> 商品一覧へ</a>
             </div>
         </div>
     </div>

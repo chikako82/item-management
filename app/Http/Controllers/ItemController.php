@@ -17,6 +17,14 @@ class ItemController extends Controller
     {
         $this->middleware('auth');
     }
+    
+    /**
+     * 管理者画面TOP
+     */
+    public function itemsTop()
+    {
+        return view('home');
+    }
 
     /**
      * 商品一覧

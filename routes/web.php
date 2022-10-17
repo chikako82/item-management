@@ -22,7 +22,8 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::prefix('items')->group(function () {
-    Route::get('/', [App\Http\Controllers\ItemController::class, 'index']);
+    Route::get('/', [App\Http\Controllers\ItemController::class, 'itemsTop']);
+    Route::get('/index', [App\Http\Controllers\ItemController::class, 'index']);
     Route::get('/add', [App\Http\Controllers\ItemController::class, 'add']);
     Route::post('/add', [App\Http\Controllers\ItemController::class, 'add']);
     Route::get('/{id}/edit', [App\Http\Controllers\ItemController::class, 'edit'])->name('/items/{id}/edit');
