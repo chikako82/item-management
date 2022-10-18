@@ -15,7 +15,7 @@ class ItemController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth:administrators');
     }
     
     /**
@@ -76,7 +76,7 @@ class ItemController extends Controller
                 'image' => $name,
                 'detail' => $request->detail,
             ]);
-            return redirect('/items');
+            return redirect('/items/index');
         }
 
         return view('item.add');
@@ -122,7 +122,7 @@ class ItemController extends Controller
         ]);
         $item->save();
 
-       return redirect('/items');
+       return redirect('/items/index');
    }
 
     // 商品削除
@@ -131,7 +131,7 @@ class ItemController extends Controller
        $item = Item::find($id);
        $item->delete();
 
-       return redirect('/items');
+       return redirect('/items/index');
    }   
 }
 

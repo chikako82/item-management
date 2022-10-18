@@ -1,5 +1,4 @@
 <?php
-// use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +18,16 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Login関係
+Route::get('/login/admin', [App\Http\Controllers\Auth\LoginController::class, 'showAdminLoginForm']);
+Route::get('/register/administrators', [App\Http\Controllers\Auth\RegisterController::class, 'showAdminRegisterForm']);
+
+Route::post('/login/administrators', [App\Http\Controllers\Auth\LoginController::class, 'adminLogin']);
+Route::post('/register/administrators', [App\Http\Controllers\Auth\RegisterController::class, 'registerAdmin'])->name('administrators-register');
+
+// Route::view('/admin', 'admin')->middleware('auth:administrator')->name('admin-home');
+
+// Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::prefix('items')->group(function () {
     Route::get('/', [App\Http\Controllers\ItemController::class, 'itemsTop']);

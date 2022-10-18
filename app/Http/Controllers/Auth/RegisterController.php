@@ -5,9 +5,13 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\Administrator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -39,6 +43,7 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        $this->middleware('guest:administrators');
     }
 
     /**
@@ -70,4 +75,53 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    /**
+     * 管理者(administrator)ログイン用
+     */
+    protected function adminValidator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:administrators'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+    }
+
+    public function showAdminRegisterForm()
+    {
+        return view('auth.register', ['authgroup' => 'administrators']);
+    }
+
+    public function registerAdmin(Request $request)
+    {
+        $this->adminValidator($request->all())->validate();
+
+        event(new Registered($user = $this->createAdmin($request->all())));
+
+        Auth::guard('administrators')->login($user);
+
+        if ($response = $this->registeredAdmin($request, $user)) {
+            return $response;
+        }
+
+        return $request->wantsJson()
+                    ? new JsonResponse([], 201)
+                    : redirect('/items');
+    }
+
+    protected function createAdmin(array $data)
+    {
+        return Administrator::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+    }
+
+    protected function registeredAdmin(Request $request, $user)
+    {
+        //
+    }
+
 }
