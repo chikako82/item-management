@@ -82,7 +82,7 @@ class LoginController extends Controller
     public function logout(Request $request) {
         if (Auth::guard('administrators')->check()) {
             $this->doLogout($request);
-            return redirect('/login/admin');
+            return redirect('/login/administrators');
         }
         else{
         $this->doLogout($request);

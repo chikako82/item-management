@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 // 管理者Login関係
-Route::get('/login/admin', [App\Http\Controllers\Auth\LoginController::class, 'showAdminLoginForm']);
+Route::get('/login/administrators', [App\Http\Controllers\Auth\LoginController::class, 'showAdminLoginForm']);
 Route::get('/register/administrators', [App\Http\Controllers\Auth\RegisterController::class, 'showAdminRegisterForm']);
 
 Route::post('/login/administrators', [App\Http\Controllers\Auth\LoginController::class, 'adminLogin']);
