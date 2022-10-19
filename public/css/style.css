@@ -27,9 +27,10 @@ form .buy-btn {
 }
 
 /* カスタマー　商品詳細画面（show.blade.php） */
-.show {
+/* .show {
     height: 50vw;
-}
+    このCSSの影響でドロップダウンメニューのCSSが崩れる。→削除
+} */
 
 .img-wrapper {
     width: 30%;

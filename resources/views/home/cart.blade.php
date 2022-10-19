@@ -4,11 +4,11 @@
 <main class="cart-main" style="background-color:white;">
     <div class="container cart-top px-6 mx-auto">
             <div>
-                @if ($message = Session::get('success'))
+                <!-- @if ($message = Session::get('success'))
                 <div class="p-4 mb-3 bg-green-400 rounded">
                     <p class="text-green-800">{{ $message }}</p>
                 </div>
-                @endif
+                @endif -->
 
                 <h3 class="text-3xl text-bold mt-5">Cart List</h3>
                 <div>

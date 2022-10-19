@@ -18,17 +18,15 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-// Login関係
+// 管理者Login関係
 Route::get('/login/admin', [App\Http\Controllers\Auth\LoginController::class, 'showAdminLoginForm']);
 Route::get('/register/administrators', [App\Http\Controllers\Auth\RegisterController::class, 'showAdminRegisterForm']);
 
 Route::post('/login/administrators', [App\Http\Controllers\Auth\LoginController::class, 'adminLogin']);
 Route::post('/register/administrators', [App\Http\Controllers\Auth\RegisterController::class, 'registerAdmin'])->name('administrators-register');
 
-// Route::view('/admin', 'admin')->middleware('auth:administrator')->name('admin-home');
 
-// Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+// 管理者画面 TOP,商品一覧•登録•削除
 Route::prefix('items')->group(function () {
     Route::get('/', [App\Http\Controllers\ItemController::class, 'itemsTop']);
     Route::get('/index', [App\Http\Controllers\ItemController::class, 'index']);
@@ -38,7 +36,7 @@ Route::prefix('items')->group(function () {
     Route::post('/{id}/edit', [App\Http\Controllers\ItemController::class, 'update'])->name('/items/{id}/edit');
     Route::delete('/{id}/delete', [App\Http\Controllers\ItemController::class, 'destroy'])->name('/items/{id}/delete');
 });
-
+// 管理者画面 カテゴリー一覧•登録•削除
 Route::prefix('types')->group(function () {
     Route::get('/', [App\Http\Controllers\TypeController::class, 'index']);
     Route::get('/add', [App\Http\Controllers\TypeController::class, 'add']);
@@ -48,6 +46,7 @@ Route::prefix('types')->group(function () {
     Route::delete('/{id}/delete', [App\Http\Controllers\TypeController::class, 'destroy'])->name('/types/{id}/delete');
 });
 
+// ユーザー画面
 Route::prefix('home')->group(function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'top']);
     Route::get('/{id}/index', [App\Http\Controllers\HomeController::class, 'index'])->name('/home/{id}/index');

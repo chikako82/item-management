@@ -21,7 +21,7 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+    use AuthenticatesUsers{ logout as doLogout; }
 
     /**
      * Where to redirect users after login.
@@ -79,13 +79,15 @@ class LoginController extends Controller
         return back()->withInput($request->only('email', 'remember'));
     }
 
-    protected function loggedOut(Request $request)
-    { 
-        if (Auth::guard('administrators')) {
+    public function logout(Request $request) {
+        if (Auth::guard('administrators')->check()) {
+            $this->doLogout($request);
             return redirect('/login/admin');
         }
-        else {
+        else{
+        $this->doLogout($request);
         return redirect('/home'); 
         }
-    }
+      }
+
 }
