@@ -10,7 +10,7 @@
                 </div>
                 @endif -->
 
-                <h3 class="text-3xl text-bold mt-5">Cart List</h3>
+                <h3 class="text-3xl text-bold mt-5">Order List</h3>
                 <div>
                     <table class="table">
                         <thead>
@@ -19,11 +19,11 @@
                               <th>Name</th>
                               <th>Qtd Quantity</th>
                               <th>Price</th>
-                              <th class="table-th">Remove</th>
+                              <!-- <th class="table-th">Remove</th> -->
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($cartItems as $item)
+                            @foreach ($orderItems as $item)
                             <tr class="table-row">
                               <td>
                                 <a href="{{ url('home/'.$item->id.'/show') }}">
@@ -35,11 +35,12 @@
                                   <p class="cart-item-name">{{ $item->name }}</p>
                                 </a>
                               </td>
-                              <td>  
+                              <td>
+                                <p class="cart-item-name">{{ $item->quantity }}</p>
 
-                                <form action="{{ url('home/cart/update') }}" method="POST" class="form-inline">
-                                    @csrf
-                                        <div class="form-group col-md-5">
+                                <!-- <form action="{{ url('home/cart/update') }}" method="POST" class="form-inline">
+                                    @csrf -->
+                                        <!-- <div class="form-group col-md-5">
                                             <input type="hidden" name="id" value="{{ $item->id}}" >
                                             <input type="number" name="quantity" value="{{ $item->quantity }}" 
                                                 class="text-center form-control-plaintext"/>
@@ -47,18 +48,18 @@
                                             <button type="submit" class="buy-btn btn btn-outline-primary btn-sm mb-2">update</button>
                                 </form>
                                     
-                                </div>
+                                </div> -->
                               </td>
                               <td>
                                 {{ $item->price }}円
                               </td>
-                              <td>
+                              <!-- <td>
                                 <form action="{{ url('home/cart/remove') }}" method="POST">
                                   @csrf
                                   <input type="hidden" value="{{ $item->id }}" name="id">
                                   <button class="buy-btn btn btn-danger btn-sm mb-2">x</button>
                                 </form>
-                              </td>
+                              </td> -->
                             </tr>
                             @endforeach
                         </tbody>
@@ -66,21 +67,24 @@
                         <div class="text-total">
                          Total: {{ Cart::getTotal() }} 円
                         </div>
-
-                        <div class="cart-btn-div mb-3">
+                        
+                        <div class="cart-btn-div">
+                        <!-- ログインしていれば支払いへ/していない場合はログインフォームへ -->
                           @if(auth()->user())
-                            <a href="{{ route('order.form')}}" class="buy-btn btn btn-primary mb-5 mr-3">BUY NOW</a>
+                          <form action="##" method="POST" class="cart-btn">
+                            @csrf
+                            <button class="buy-btn btn btn-primary mb-5 mr-2">支払いへ</button>
+                          </form>
                           @else
                           <form action="{{ url('/login') }}" method="GET" class="cart-btn">
                             @csrf
-                            <button class="buy-btn btn btn-primary mb-5 mr-3">BUY NOW（未ログイン者）</button>
+                            <button class="buy-btn btn btn-primary mb-5 mr-2">未ログイン者はログイン画面へ</button>
                           </form>
                           @endif
-
-                          <form action="{{ url('home/cart/clear') }}" method="POST" class="cart-btn">
-                            @csrf
-                            <button class="buy-btn btn btn-outline-danger mb-5">Remove All Cart</button>
-                          </form>
+                          
+                          <a href="{{ url('home/cart') }}" class="cart-btn">
+                            <button class="buy-btn btn btn-outline-danger mb-1">Cart Listへ</button>
+                          </a>
                         </div>
 
 

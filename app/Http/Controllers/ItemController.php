@@ -68,7 +68,7 @@ class ItemController extends Controller
             
             // 登録処理 
             Item::create([
-                'user_id' => Auth::user()->id,
+                // 'user_id' => Auth::user()->id,
                 'name' => $request->name,
                 'type_id' =>$request->type,
                 'price' => $request->price,

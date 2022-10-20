@@ -48,7 +48,7 @@ Route::prefix('types')->group(function () {
 
 // ユーザー画面
 Route::prefix('home')->group(function () {
-    Route::get('/', [App\Http\Controllers\HomeController::class, 'top']);
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'top'])->name('home');
     Route::get('/{id}/index', [App\Http\Controllers\HomeController::class, 'index'])->name('/home/{id}/index');
     Route::get('/{id}/show', [App\Http\Controllers\HomeController::class, 'show'])->name('/home/{id}/show');
     Route::get('/cart', [App\Http\Controllers\CartController::class, 'cartList']);
@@ -56,5 +56,8 @@ Route::prefix('home')->group(function () {
     Route::post('/cart/update', [App\Http\Controllers\CartController::class, 'updateCart']);
     Route::post('/cart/remove', [App\Http\Controllers\CartController::class, 'removeCart']);
     Route::post('/cart/clear', [App\Http\Controllers\CartController::class, 'clearAllCart']);
+
+    Route::get('/order', [App\Http\Controllers\OrderController::class, 'orderForm'])->name('order.form');
+    Route::post('/order', [App\Http\Controllers\OrderController::class, 'addToOrder']);
 
 });

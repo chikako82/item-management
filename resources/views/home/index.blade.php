@@ -5,7 +5,7 @@
   <h2 class="font-weight-bold pt-3">{{$current_type_name}}</h2>
   <hr class="bg-dark" />
   
-    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 mb-3 card-wrapper">  
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 mb-5 card-wrapper">  
     @foreach($items as $item)
       <div class="col card">
         <div class="card-img">
