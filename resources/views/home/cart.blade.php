@@ -78,18 +78,22 @@
 
                         <div class="cart-btn-div mb-3">
                           @if(auth()->user())
-                            <a href="{{ route('checkout')}}" class="cart-btn buy-btn btn btn-primary mb-1 mr-3">BUY NOW</a>
+                            <a href="{{ route('checkout')}}" class="cart-btn buy-btn btn btn-primary mb-1 mr-2">BUY NOW</a>
                           @else
                           <form action="{{ url('/login') }}" method="GET" class="cart-btn">
                             @csrf
-                            <button class="buy-btn btn btn-primary mb-5 mr-3">BUY NOW（未ログイン者）</button>
+                            <button class="buy-btn btn btn-primary mb-5 mr-2">BUY NOW（未ログイン者）</button>
                           </form>
                           @endif
 
                           <form action="{{ url('home/cart/clear') }}" method="POST" class="cart-btn">
                             @csrf
-                            <button class="buy-btn btn btn-outline-danger mb-5">Remove All Cart</button>
+                            <button class="buy-btn btn btn-outline-danger mb-5 mr-2">Remove All Cart</button>
                           </form>
+
+                          <div class="cart-btn">
+                            <button class="buy-btn btn btn-outline-primary mb-1" onClick="history.back();">Back</button>
+                          </div>
                         </div>
 
 

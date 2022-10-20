@@ -26,9 +26,7 @@
               @endif
               <hr>
           </div>
-          <!-- <div style="text-align: center">
-            <a class="buy-btn btn btn-outline-primary btn-sm mb-2 @if($item->stock == 0) disabled @endif" href="#" role="button" @if($item->stock == 0)tabindex="-1" @endif>ADD TO BAG</a>    
-          </div> -->
+          
           <form action="{{ url('home/cart') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <input type="hidden" value="{{ $item->id }}" name="id">

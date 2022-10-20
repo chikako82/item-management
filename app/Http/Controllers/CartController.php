@@ -40,6 +40,7 @@ class CartController extends Controller
             'quantity' => 'integer', 'min:0',
         ]);
 
+        // 在庫より注文数が多い場合はエラーメッセージと共にCartListにリダイレクト
         $currentItemId = Item::find($request->id);
         $currentItemStock = $currentItemId->stock;
         // dd($currentItemStock);
@@ -64,9 +65,15 @@ class CartController extends Controller
     public function removeCart(Request $request)
     {
         \Cart::remove($request->id);
-        // session()->flash('success', 'Item Cart Remove Successfully !');
-
+        
+        $totalQuantity = \Cart::getTotalQuantity();
+        if($totalQuantity == 0){
+            session()->flash('success', 'Item Cart Remove Successfully !');
+            return redirect('/home');
+        }
+        else {
         return redirect('/home/cart');
+        }
     }
 
     public function clearAllCart()
