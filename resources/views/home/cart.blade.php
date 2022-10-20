@@ -41,13 +41,13 @@
                                     @csrf
                                         <div class="form-group col-md-5">
                                             <input type="hidden" name="id" value="{{ $item->id}}" >
-                                            <input type="number" name="quantity" value="{{ $item->quantity }}" 
+                                            <input type="number" min="0" name="quantity" value="{{ $item->quantity }}" 
                                                 class="text-center form-control-plaintext"/>
                                         </div>
                                             <button type="submit" class="buy-btn btn btn-outline-primary btn-sm mb-2">update</button>
                                 </form>
-                                    
-                                </div>
+                                
+
                               </td>
                               <td>
                                 {{ $item->price }}円
@@ -63,13 +63,22 @@
                             @endforeach
                         </tbody>
                     </table>
+
+                      <!-- フラッシュメッセージ -->
+                      @if (session('errorMessage'))
+                        <div class="alert alert-danger text-center">
+                          {{ session('errorMessage') }}
+                        </div> 
+                      @endif
+                      <!-- フラッシュメッセージ終わり -->
+
                         <div class="text-total">
                          Total: {{ Cart::getTotal() }} 円
                         </div>
 
                         <div class="cart-btn-div mb-3">
                           @if(auth()->user())
-                            <a href="{{ route('order.form')}}" class="buy-btn btn btn-primary mb-5 mr-3">BUY NOW</a>
+                            <a href="{{ route('checkout')}}" class="cart-btn buy-btn btn btn-primary mb-1 mr-3">BUY NOW</a>
                           @else
                           <form action="{{ url('/login') }}" method="GET" class="cart-btn">
                             @csrf

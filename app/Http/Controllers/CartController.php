@@ -35,6 +35,19 @@ class CartController extends Controller
 
     public function updateCart(Request $request)
     {
+        // 数量に負の数が入力できないようvalidateを設定
+        $this->validate($request, [
+            'quantity' => 'integer', 'min:0',
+        ]);
+
+        $currentItemId = Item::find($request->id);
+        $currentItemStock = $currentItemId->stock;
+        // dd($currentItemStock);
+
+        if($request->quantity > $currentItemStock) {
+            return redirect('/home/cart')->with('errorMessage', 'Sorry, out of stock. ');
+        }
+        else {
         \Cart::update(
             $request->id,
             [
@@ -44,9 +57,8 @@ class CartController extends Controller
                 ],
             ]
         );
-        // session()->flash('success', 'Item Cart is Updated Successfully !');
-
         return redirect('/home/cart');
+        }
     }
 
     public function removeCart(Request $request)
@@ -61,8 +73,8 @@ class CartController extends Controller
     {
         \Cart::clear();
 
-        // session()->flash('success', 'All Item Cart Clear Successfully !');
+        session()->flash('success', 'All Item Cart Clear Successfully !');
 
-        return redirect('/home/cart');
+        return redirect('/home');
     }
 }

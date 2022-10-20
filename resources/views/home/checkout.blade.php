@@ -68,22 +68,13 @@
                          Total: {{ Cart::getTotal() }} 円
                         </div>
                         
-                        <div class="cart-btn-div">
-                        <!-- ログインしていれば支払いへ/していない場合はログインフォームへ -->
-                          @if(auth()->user())
-                          <form action="##" method="POST" class="cart-btn">
-                            @csrf
-                            <button class="buy-btn btn btn-primary mb-5 mr-2">支払いへ</button>
-                          </form>
-                          @else
-                          <form action="{{ url('/login') }}" method="GET" class="cart-btn">
-                            @csrf
-                            <button class="buy-btn btn btn-primary mb-5 mr-2">未ログイン者はログイン画面へ</button>
-                          </form>
-                          @endif
+                        <div class="cart-btn-div mb-3">
+                          <a href="##" class="cart-btn">
+                            <button class="buy-btn btn btn-primary mb-5">Continue to checkout</button>
+                          </a>
                           
                           <a href="{{ url('home/cart') }}" class="cart-btn">
-                            <button class="buy-btn btn btn-outline-danger mb-1">Cart Listへ</button>
+                            <button class="buy-btn btn btn-outline-danger mb-5">Back to Cart List</button>
                           </a>
                         </div>
 

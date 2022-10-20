@@ -57,7 +57,7 @@ Route::prefix('home')->group(function () {
     Route::post('/cart/remove', [App\Http\Controllers\CartController::class, 'removeCart']);
     Route::post('/cart/clear', [App\Http\Controllers\CartController::class, 'clearAllCart']);
 
-    Route::get('/order', [App\Http\Controllers\OrderController::class, 'orderForm'])->name('order.form');
-    Route::post('/order', [App\Http\Controllers\OrderController::class, 'addToOrder']);
+    Route::get('/checkout', [App\Http\Controllers\CheckoutController::class, 'checkout'])->name('checkout');
+    // Route::post('/order', [App\Http\Controllers\CheckoutController::class, 'addToOrder']);
 
 });
