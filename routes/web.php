@@ -60,4 +60,8 @@ Route::prefix('home')->group(function () {
     Route::get('/checkout', [App\Http\Controllers\CheckoutController::class, 'checkout'])->name('checkout');
     Route::get('/checkout/user-info', [App\Http\Controllers\CheckoutController::class, 'deliveryDetails'])->name('user-info');
     Route::post('/checkout/user-info', [App\Http\Controllers\CheckoutController::class, 'create'])->name('user-info');
+
+    Route::get('/payment', [App\Http\Controllers\StripeController::class, 'showCharge'])->name('charge');
+    Route::post('/payment', [App\Http\Controllers\StripeController::class, 'charge'])->name('charge');
+    Route::get('/payment/complete', [App\Http\Controllers\StripeController::class, 'complete'])->name('complete');
 });

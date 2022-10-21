@@ -44,7 +44,7 @@
                         <input type="tel" pattern="\d{2,4}-?\d{2,4}-?\d{3,4}" class="form-control" id="phone" name="phone" required>
                 </div>
                 <div class="pb-5">
-                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button type="submit" class="btn btn-primary mr-2">SAVE</button>
                     <button type="reset" class="btn btn-outline-danger mr-2">Reset</button>
                     <button class="btn btn-outline-primary" onClick="history.back();">Back</button>
                 </div>

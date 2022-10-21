@@ -52,11 +52,11 @@ class CheckoutController extends Controller
         $types = Type::all();
 
         $this->validate($request, [
-            'fullname' => 'required',
-            'postcode' => 'required',
-            'address' => 'required',
-            'phone' => 'required',
-        ]);
+             'fullname' => 'required',
+             'postcode' => 'required',
+             'address' => 'required',
+             'phone' => 'required',
+         ]);
 
         $userId = auth()->user()->id;
         $user = User::find($userId);
@@ -71,8 +71,8 @@ class CheckoutController extends Controller
             'phone' => $request->phone,
         ]);
         $user->save();
-        
-        return view('home.payment');
+
+        return redirect('/home/payment');
     }
 
 }
