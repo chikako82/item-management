@@ -69,7 +69,7 @@
                         </div>
                         
                         <div class="cart-btn-div mb-3">
-                          <a href="{{ route('delivery') }}" class="cart-btn">
+                          <a href="{{ route('user-info') }}" class="cart-btn">
                             <button class="buy-btn btn btn-primary mb-5">Continue to checkout</button>
                           </a>
                           

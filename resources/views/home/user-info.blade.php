@@ -17,7 +17,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('delivery') }}">
+            <form method="POST" action="{{ route('user-info') }}">
             @csrf
                 <div class="form-group">
                     <label for="inputEmail1">Email</label>

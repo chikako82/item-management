@@ -44,7 +44,7 @@ class CheckoutController extends Controller
         $userEmail = auth()->user()->email;
         // dd($userEmail);
 
-        return view('home.delivery', compact('types','userEmail'));
+        return view('home.user-info', compact('types','userEmail'));
     }
 
     public function create(Request $request)
@@ -71,7 +71,8 @@ class CheckoutController extends Controller
             'phone' => $request->phone,
         ]);
         $user->save();
-        return view('home/payment');
+        
+        return view('home.payment');
     }
 
 }
