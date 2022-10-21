@@ -35,9 +35,9 @@ class CartController extends Controller
 
     public function updateCart(Request $request)
     {
-        // 数量に負の数が入力できないようvalidateを設定
+        // 数量に負の数・0が入力できないようvalidateを設定
         $this->validate($request, [
-            'quantity' => 'integer', 'min:0',
+            'quantity' => 'integer', 'min:1',
         ]);
 
         // 在庫より注文数が多い場合はエラーメッセージと共にCartListにリダイレクト

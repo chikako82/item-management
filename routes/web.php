@@ -58,6 +58,6 @@ Route::prefix('home')->group(function () {
     Route::post('/cart/clear', [App\Http\Controllers\CartController::class, 'clearAllCart']);
 
     Route::get('/checkout', [App\Http\Controllers\CheckoutController::class, 'checkout'])->name('checkout');
-    // Route::post('/order', [App\Http\Controllers\CheckoutController::class, 'addToOrder']);
-
+    Route::get('/checkout/delivery', [App\Http\Controllers\CheckoutController::class, 'deliveryDetails'])->name('delivery');
+    Route::post('/checkout/delivery', [App\Http\Controllers\CheckoutController::class, 'create'])->name('delivery');
 });

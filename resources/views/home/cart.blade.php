@@ -41,7 +41,7 @@
                                     @csrf
                                         <div class="form-group col-md-5">
                                             <input type="hidden" name="id" value="{{ $item->id}}" >
-                                            <input type="number" min="0" name="quantity" value="{{ $item->quantity }}" 
+                                            <input type="number" min="1" name="quantity" value="{{ $item->quantity }}" 
                                                 class="text-center form-control-plaintext"/>
                                         </div>
                                             <button type="submit" class="buy-btn btn btn-outline-primary btn-sm mb-2">update</button>
