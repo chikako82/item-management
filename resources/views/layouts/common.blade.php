@@ -35,9 +35,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item ">
+                        <!-- <li class="nav-item ">
                             <a class="nav-link" href="#">CONTACT</a>
-                        </li>
+                        </li> -->
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -104,6 +104,7 @@
                 </div>
             </div>
         </nav>
+
         <div class="nav">
             <nav class="navbar navbar-expand-md navbar-light bg-light fixed-bottom">
                <a href="{{ url('home') }}" class="navbar-brand h1">HOME</a>

@@ -34,7 +34,11 @@
             <input type="hidden" value="{{ $item->price }}" name="price">
             <input type="hidden" value="{{ $item->image }}"  name="image">
             <input type="hidden" value="1" name="quantity">
-            <button type="submit" class="buy-btn btn btn-outline-primary btn-sm mb-2" @if($item->stock == 0) disabled @endif>Add To Cart</button>
+            @if($item->stock == 0)
+            <button type="submit" class="buy-btn btn btn-outline-primary btn-sm mb-2" disabled>SOLD OUT</button>
+            @else
+            <button type="submit" class="buy-btn btn btn-outline-primary btn-sm mb-2">Add To Cart</button>
+            @endif
           </form>
       </div>
     @endforeach

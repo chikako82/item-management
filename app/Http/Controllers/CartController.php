@@ -13,8 +13,9 @@ class CartController extends Controller
     {
         $types = Type::all();
         $cartItems = \Cart::getContent();
+        $totalQuantity = \Cart::getTotalQuantity();
         
-        return view('home.cart', compact('cartItems','types'));
+        return view('home.cart', compact('cartItems','types','totalQuantity'));
     }
 
     public function addToCart(Request $request)
@@ -80,7 +81,7 @@ class CartController extends Controller
     {
         \Cart::clear();
 
-        session()->flash('success', 'All Item Cart Clear Successfully !');
+        // session()->flash('success', 'All Item Cart Clear Successfully !');
 
         return redirect('/home');
     }

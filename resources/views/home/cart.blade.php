@@ -44,7 +44,7 @@
                                             <input type="number" min="1" name="quantity" value="{{ $item->quantity }}" 
                                                 class="text-center form-control-plaintext"/>
                                         </div>
-                                            <button type="submit" class="buy-btn btn btn-outline-primary btn-sm mb-2">update</button>
+                                            <button type="submit" class="buy-btn btn btn-outline-primary btn-sm mb-2">UPDATE</button>
                                 </form>
                                 
 
@@ -77,18 +77,24 @@
                         </div>
 
                         <div class="cart-btn-div mb-3">
-                          @if(auth()->user())
-                            <a href="{{ route('checkout')}}" class="cart-btn buy-btn btn btn-primary mb-1 mr-2">BUY NOW</a>
-                          @else
-                          <form action="{{ url('/login') }}" method="GET" class="cart-btn">
-                            @csrf
-                            <button class="buy-btn btn btn-primary mb-5 mr-2">BUY NOW（未ログイン者）</button>
-                          </form>
+                          @if($totalQuantity !== 0)
+                            @if(auth()->user())
+                              <a href="{{ route('checkout')}}" class="cart-btn buy-btn btn btn-primary mb-1 mr-2">BUY NOW</a>
+                            @else
+                            <form action="{{ url('/login') }}" method="GET" class="cart-btn">
+                              @csrf
+                              <button class="buy-btn btn btn-primary mb-5 mr-2">BUY NOW</button>
+                            </form>
+                            @endif
                           @endif
 
                           <form action="{{ url('home/cart/clear') }}" method="POST" class="cart-btn">
                             @csrf
+                            @if($totalQuantity == 0)
+                            <button class="buy-btn btn btn-outline-danger mb-5 mr-2" style="visibility: hidden;">Remove All Cart</button>
+                            @else
                             <button class="buy-btn btn btn-outline-danger mb-5 mr-2">Remove All Cart</button>
+                            @endif
                           </form>
 
                           <div class="cart-btn">
