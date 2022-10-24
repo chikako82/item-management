@@ -1,0 +1,161 @@
+/* カスタマー　共通画面 */
+body {
+    margin-top: 60px;
+    background-image: url(../images/top-photo2022-10-24.jpg);
+    background-size: cover;
+}
+
+/* カスタマー　商品一覧画面（index.blade.php） */
+.card {
+    margin-right: 10px;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: contain;
+}
+
+.card-title {
+    color: black;
+    text-decoration: none;
+}
+
+form .buy-btn {
+    display: block;
+    margin: auto;
+}
+
+/* カスタマー　商品詳細画面（show.blade.php） */
+/* .show {
+    height: 50vw;
+    このCSSの影響でドロップダウンメニューのCSSが崩れる。→削除
+} */
+
+.img-wrapper {
+    width: 30%;
+    height: 30vw;
+}
+
+.img-wrapper img {
+    width: 100%;
+    height: 100%;
+}
+
+.cart-card {
+    height: 20vw;
+}
+
+/* カスタマー　カート画面 */
+.cart-main {
+    width: 100%;
+}
+
+.cart-top {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    background-color: white;
+}
+
+.table-th {
+    text-align: center;
+}
+.table-row {
+    height: 15vw;
+    width: 100%;
+}
+
+.table-row td {
+    width: 10%;
+    height: 70%;
+}
+
+.table-row td a img {
+    width: 80%;
+    height: auto;
+}
+
+.cart-item-name {
+    text-decoration: none;
+    color: black;
+}
+
+.text-total {
+    text-align: right;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.cart-btn {
+    display: inline-block
+}
+
+.cart-btn-div {
+    text-align: center;
+}
+
+/* カスタマー支払い完了画面 */
+.pay-msg {
+    font-weight: bold;
+    font-size: large;
+}
+
+.pay-msg2 {
+    font-style: italic;
+}
+
+@media screen and (max-width:767px) {
+    body {
+      min-width: 100%;
+    }
+    
+    /* カスタマー　商品一覧画面（index.blade.php） */
+    .row {
+        width: 80%;
+        text-align: center;
+    }
+
+    .row .card {
+        margin-left: auto;
+        margin-right: auto;
+        height: 500px;
+    }
+    .card-img {
+        width: 60%;
+        height: 80%;
+    }
+    .card-img a img {
+        width:100%;
+        height: 100%;
+    }
+
+    /* カスタマー　商品詳細画面（show.blade.php） */
+    .show {
+        height: 130vw;
+    }
+
+    .container .product-container {
+        margin-left: auto;
+        margin-right: auto;
+        height: 350px;
+    }
+
+    .img-wrapper {
+        width: 50%;
+        height: 60%;
+    }
+
+    .img-wrapper img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .show-body {
+        padding-top: 0rem;
+        padding-bottom: 0rem;
+    }
+
+    .show-text {
+        margin-bottom: 0rem;
+    }
+}

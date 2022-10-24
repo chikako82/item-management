@@ -188,7 +188,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => '/',
+    'dashboard_url' => '/items',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -227,9 +227,14 @@ return [
     'menu' => [
         [
             'text' => '商品一覧',
-            'url'  => 'items',
+            'url'  => 'items/index',
             'icon' => 'fas fa-gamepad',
         ],
+        [
+            'text' => 'カテゴリー一覧',
+            'url' => 'types',
+            'icon' => 'fas fa-gamepad',
+        ]
 
         // AdminLTEデフォルト
         /*

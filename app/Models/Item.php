@@ -14,8 +14,11 @@ class Item extends Model
     protected $fillable = [
         'user_id',
         'name',
-        'type',
+        'type_id',
         'detail',
+        'price',
+        'image',
+        'stock',
     ];
 
     /**
@@ -33,4 +36,8 @@ class Item extends Model
      */
     protected $casts = [
     ];
+
+    public function type(){
+        return $this->hasOne('App\Models\Type','id','type_id');
+       }
 }

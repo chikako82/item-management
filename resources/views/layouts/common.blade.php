@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>TOP</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -17,14 +17,16 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/75e204f764.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a class="navbar-brand" href="{{ url('home') }}">
+                    SHOP HOME
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -33,11 +35,20 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <!-- <li class="nav-item ">
+                            <a class="nav-link" href="#">CONTACT</a>
+                        </li> -->
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <!-- <form class="form-inline ml-auto">
+                            <label class="sr-only" for="keyword">SERCH</label>
+                            <input type="search" class="form-control form-control-sm mr-2" placeholder="SEARCH" id="keyword">
+                            <button type="submit" class="btn btn-light btn-sm mr-5">SEARCH</button>
+                        </form> -->
+                        <li class="nav-item"><a class="nav-link" href="{{ url('home/cart') }}"><i class="fa-solid fa-cart-shopping"></i> {{ Cart::getTotalQuantity()}}</a>
+                        </li>
                         <!-- Authentication Links -->
                         @if(!Auth::check() && (!isset($authgroup) || !Auth::guard($authgroup)->check()))
                             @if (Route::has('login'))
@@ -73,7 +84,7 @@
                                     {{ Auth::guard($authgroup)->user()->name }}
                                     @else
                                     {{ Auth::user()->name }}
-                                    @endisset}
+                                    @endisset
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -94,7 +105,23 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <div class="nav">
+            <nav class="navbar navbar-expand-md navbar-light bg-light fixed-bottom">
+               <a href="{{ url('home') }}" class="navbar-brand h1">HOME</a>
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#responsiveMenu" aria-controls="responsiveMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="responsiveMenu">
+                    <div class="navbar-nav">
+                        @foreach($types as $type)
+                        <a class="nav-item nav-link h4" href="{{ url('home/'.$type->id.'/index') }}">{{ $type->name }}</a>
+                        @endforeach
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <main class="py-2">
             @yield('content')
         </main>
     </div>

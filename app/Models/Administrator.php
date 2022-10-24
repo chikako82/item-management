@@ -8,10 +8,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class Administrator extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $guard = 'administrators';
+    protected $table = 'administrators';
+    
     /**
      * The attributes that are mass assignable.
      *
@@ -21,10 +24,6 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'postcode',
-        'address',
-        'phone',
-        'fullname',
     ];
 
     /**
@@ -45,9 +44,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    // ユーザーとitemの紐付け
-    // public function items() {
-    //     return $this->hasMany(Item::class);
-    // }
 }
