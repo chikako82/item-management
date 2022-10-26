@@ -27,7 +27,7 @@
                                 <th>ID</th>
                                 <th>カテゴリー名</th>
                                 <th>編集</th>
-                                <th>削除</th>
+                                <!-- <th>削除</th> -->
                             </tr>
                         </thead>
                         <tbody>
@@ -41,11 +41,11 @@
                                             <button type="button" class="btn btn-outline-danger">編集</button>
                                         </a>
                                     </td>
-                                    <td>
+                                    <!-- <td> -->
                                         <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modal{{$type->id}}">削除</button></td>
+                                        <!-- <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modal{{$type->id}}">削除</button></td> -->
                                         <!-- Modal -->
-                                        <div class="modal fade" id="modal{{$type->id}}" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                                        <!-- <div class="modal fade" id="modal{{$type->id}}" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <form action="{{ url('types/'.$type->id.'/delete') }}" method="POST">
                                                     @csrf
@@ -67,7 +67,7 @@
                                                     </div>
                                                 </form>
                                             </div>
-                                        </div>
+                                        </div> -->
                                 </tr>
                             @endforeach
                         
